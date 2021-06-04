@@ -13,9 +13,12 @@ const forecast = async (lat, long, callback) => {
       callback('Unable to obtain forecast. Try another location.');
     }
 
-    const { temperature, feelslike } = data.current;
+    const { temperature, feelslike, humidity } = data.current;
 
-    callback(null, `It is ${temperature}° F. It feels like ${feelslike}° F.`);
+    callback(
+      null,
+      `It is ${temperature}° F. It feels like ${feelslike}° F. The humidity is ${humidity}%.`
+    );
   } catch (error) {
     callback('Unable to connect to weather services.');
   }
